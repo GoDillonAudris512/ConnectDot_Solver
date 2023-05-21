@@ -1,5 +1,5 @@
 import IO.Parser;
-import Solver.OneLineSolver;
+import Solver.ConnectDotSolver;
 
 public class App {
     public static void main(String args[]) {
@@ -9,7 +9,7 @@ public class App {
         else {
             try {
                 System.out.println("=========================================================================");
-                new OneLineSolver().solve(new Parser().parseBoard(args[0]));
+                new ConnectDotSolver().solve(new Parser().parseBoard(args[0]));
                 System.out.println("=========================================================================");
             }
             catch (NumberFormatException e) {

@@ -125,7 +125,7 @@ public class Board {
                     result += "R ";
                 }
                 else {
-                    result += "W ";
+                    result += "  ";
                 }
             }
             result += "\n";

@@ -1,6 +1,6 @@
 /**
- * Class OneLineSolver
- * A class to solve the one-line game board.
+ * Class ConnectDotSolver
+ * A class to solve the connect-dot game board.
  */
 
 package Solver;
@@ -8,7 +8,9 @@ package Solver;
 import java.util.*;
 import Container.*;
 
-public class OneLineSolver {
+public class ConnectDotSolver {
+    private Long startTime;
+    private Long estimatedTime;
 
     public void printSteps(List<String> steps) {
         String result = "Langkah : ";
@@ -29,6 +31,7 @@ public class OneLineSolver {
         board.visitNode(toVisit);
 
         if (board.isAllVisited()) {
+            this.estimatedTime = System.currentTimeMillis() - this.startTime;
             printSteps(currentSteps);
             return true;
         }
@@ -80,6 +83,7 @@ public class OneLineSolver {
 
     public void solve(Board board) {
         System.out.println("Papan Permainan:\n" + board);
+        this.startTime = System.currentTimeMillis();
 
         Coordinate start = board.findStartCoordinate();
         board.visitNode(start);
@@ -124,7 +128,9 @@ public class OneLineSolver {
         }
 
         if (!done) {
-            System.out.println("Tidak ada langkah yang mungkin untuk menyelesaikan permainan one-line ini");
+            this.estimatedTime = System.currentTimeMillis() - this.startTime;
+            System.out.println("Tidak ada langkah yang mungkin untuk menyelesaikan permainan ini");
         }
+        System.out.println("\nWaktu pemrosesan : " + this.estimatedTime + " ms");
     }
 }
